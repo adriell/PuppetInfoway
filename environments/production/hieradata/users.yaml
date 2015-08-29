@@ -1,0 +1,17 @@
+tomcat::roles::list:
+        - manager-gui
+        - manager-script
+        - manager-jmx
+        - manager-status
+        - admin-gui
+        - admin-script
+tomcat::users::list:
+        - username: admin
+          password: infoway
+        - username: puppet
+          password: infoway
+tomcat::users::map:
+        - username: admin
+          roles: manager-gui,admin-gui
+        - username: puppet
+          roles: manager-gui

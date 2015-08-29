@@ -1,0 +1,10 @@
+---
+:backends:
+  - yaml
+:hierarchy:
+  - "data_source"
+  - "configuration"
+  - "users"
+:yaml:
+    :datadir: /etc/puppet/environments/production/hieradata
+
