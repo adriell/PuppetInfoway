@@ -1,0 +1,55 @@
+{
+  "name": "oscerd-tomcat",
+  "version": "1.0.6",
+  "author": "Oscerd",
+  "summary": "The Tomcat module installs and customize Apache Tomcat on your nodes.",
+  "license": "Apache-2.0",
+  "source": "https://github.com/oscerd/puppet-tomcat-module",
+  "project_page": "https://github.com/oscerd/puppet-tomcat-module",
+  "issues_url": "https://github.com/oscerd/puppet-tomcat-module/issues",
+  "description": "The Tomcat module installs and customize Apache Tomcat on your node.\nThe module make possible to set the Tomcat version, the directory into which\nit will install, the temporary folder where the package will be extracted and many other features. Take a look at the documentation to know more.",
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "5.0",
+        "6.0"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "14.04",
+        "12.04",
+        "10.04"
+      ]
+    },
+    {
+      "operatingsystem": "Fedora",
+      "operatingsystemrelease": [
+        "20.0"
+      ]
+    },
+    {
+      "operatingsystem": "Centos",
+      "operatingsystemrelease": [
+        "6.5"
+      ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "7.5"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">=2.7.20 <4.0.0"
+    }
+  ],
+  "dependencies": [
+  
+  ]
+}

@@ -25,40 +25,14 @@ node 'infoway.puppet.lan'{
         require => Package['epel-release']
     }
 
-      $ds_resource_name = hiera('tomcat::data_source::ds_resource_name')
-      $ds_max_wait = hiera('tomcat::data_source::ds_max_wait')
-      $ds_username = hiera('tomcat::data_source::ds_username')
-      $ds_password = hiera('tomcat::data_source::ds_password')
-      $ds_driver_class_name = hiera('tomcat::data_source::ds_driver_class_name')
-      $ds_driver = hiera('tomcat::data_source::ds_driver')
-      $ds_dbms = hiera('tomcat::data_source::ds_dbms')
-      $ds_host = hiera('tomcat::data_source::ds_host')
-      $ds_port = hiera('tomcat::data_source::ds_port')
-      $ds_service = hiera('tomcat::data_source::ds_service')
-      $ds_url = "${ds_driver}:${ds_dbms}:thin:@${ds_host}:${ds_port}/${ds_service}"
-      
-      
-      $http_port = hiera('tomcat::params::http_port')
-      $https_port = hiera('tomcat::params::https_port')
-      $ajp_port = hiera('tomcat::params::ajp_port')
-      $shutdown_port = hiera('tomcat::params::shutdown_port')
-      $http_connection_timeout = hiera('tomcat::params::http_connection_timeout')
-      $https_max_threads = hiera('tomcat::params::https_max_threads')           
-      $https_keystore_pwd = hiera('tomcat::params::https_keystore_pwd')
-      
-      $tomcat_roles = hiera('tomcat::roles::list')
-      # Set Users
-      $tomcat_users = hiera('tomcat::users::list')
-      # Set Mapping users-roles
-      $tomcat_map = hiera('tomcat::users::map')
-      
+
       tomcat::setup { "tomcat":
          family => "7",
          update_version => "64",
          extension      => ".tar.gz",
          source_mode    => "web",
          installdir     => "/opt/",
-         #tmpdir         => "/tmp/",
+         tmpdir         => "/tmp/",
          install_mode   => "custom",
          data_source    => "yes",
          driver_db      => "yes",
@@ -75,16 +49,44 @@ node 'infoway.puppet.lan'{
           deploy_path          => "/home/quantum/web",
           context              => "/quantum",
           symbolic_link        => "yes",
-          #external_conf        => "yes",
-          #external_dir        => "report/",
-          #external_conf_path  => "/conf/",
+          external_conf        => "yes",
+          external_dir        => "report/",
+          external_conf_path  => "/conf/",
           family               => "7",
           update_version       => "55",
-          installdir           => "/home/app",
+          installdir           => "/opt/",
           tmpdir               => "/tmp/",
           hot_deploy           => "yes",
           as_service           => "yes",
           direct_restart       => "no",
           require              => Tomcat::Setup["tomcat"]
           }
+
+          $ds_resource_name = hiera('tomcat::data_source::ds_resource_name')
+                $ds_max_wait = hiera('tomcat::data_source::ds_max_wait')
+                      $ds_username = hiera('tomcat::data_source::ds_username')
+                            $ds_password = hiera('tomcat::data_source::ds_password')
+                                  $ds_driver_class_name = hiera('tomcat::data_source::ds_driver_class_name')
+                                        $ds_driver = hiera('tomcat::data_source::ds_driver')
+                                              $ds_dbms = hiera('tomcat::data_source::ds_dbms')
+                                                    $ds_host = hiera('tomcat::data_source::ds_host')
+                                                          $ds_port = hiera('tomcat::data_source::ds_port')
+                                                                $ds_service = hiera('tomcat::data_source::ds_service')
+                                                                      $ds_url = "${ds_driver}:${ds_dbms}:thin:@${ds_host}:${ds_port}/${ds_service}"
+                                                                            
+                                                                            
+                                                                            $http_port = hiera('tomcat::params::http_port')
+                                                                                  $https_port = hiera('tomcat::params::https_port')
+                                                                                        $ajp_port = hiera('tomcat::params::ajp_port')
+                                                                                              $shutdown_port = hiera('tomcat::params::shutdown_port')
+                                                                                                    $http_connection_timeout = hiera('tomcat::params::http_connection_timeout')
+                                                                                                          $https_max_threads = hiera('tomcat::params::https_max_threads')           
+                                                                                                                $https_keystore_pwd = hiera('tomcat::params::https_keystore_pwd')
+                                                                                                                      
+                                                                                                                      $tomcat_roles = hiera('tomcat::roles::list')
+                                                                                                                            # Set Users
+                                                                                                                                  $tomcat_users = hiera('tomcat::users::list')
+                                                                                                                                        # Set Mapping users-roles
+                                                                                                                                              $tomcat_map = hiera('tomcat::users::map')
+
 }

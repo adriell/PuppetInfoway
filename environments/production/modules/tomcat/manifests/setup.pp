@@ -145,10 +145,11 @@ define tomcat::setup (
     }
   } elsif ($source_mode == 'web') {
     $source = "${web_repo_path}tomcat-${family}/v${family}.0.${update_version}/bin/${tomcat}-${family}.0.${update_version}${extension}"
-
+    #$source = "${web_repo_path}tomcat-${family}/v${family}.0.${update_version}/bin/apache-tomcat-${family}.0.${update_version}${extension}"
+    #$source =  "http://mirror.nbtelecom.com.br/apache/tomcat/tomcat-7/v7.0.64/bin/apache-tomcat-7.0.64.tar.gz"
     exec { "tomcat::setup::retrieve_tomcat::${tomcat}-${family}.0.${update_version}":
       command => "wget -q ${source} -P ${defined_tmpdir}",
-      unless  => "ls ${defined_installdir}${tomcat}-${family}.0.${update_version}/",
+        unless  => "ls ${defined_installdir}${tomcat}-${family}.0.${update_version}/",
       timeout => 1000
     }
 
